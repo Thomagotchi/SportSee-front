@@ -1,0 +1,38 @@
+.navbar {
+  background-color: black;
+  width: 100vw;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 149px;
+  justify-content: space-between;
+  padding: 18px 91px 12px 28px;
+  box-sizing: border-box;
+}
+
+.navbar_home {
+  display: inline-flex;
+  align-items: center;
+}
+
+.navbar_home img {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 219px;
+}
+
+.navbar_link {
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 500;
+}
