@@ -1,0 +1,32 @@
+{
+  "links": [
+    {
+      "icon": {
+        "src": "/assets/icons/meditating.png",
+        "alt": ""
+      },
+      "href": "/"
+    },
+    {
+      "icon": {
+        "src": "/assets/icons/swimming.png",
+        "alt": ""
+      },
+      "href": "/"
+    },
+    {
+      "icon": {
+        "src": "/assets/icons/cycling.png",
+        "alt": ""
+      },
+      "href": "/"
+    },
+    {
+      "icon": {
+        "src": "/assets/icons/dumbell.png",
+        "alt": ""
+      },
+      "href": "/"
+    }
+  ]
+}

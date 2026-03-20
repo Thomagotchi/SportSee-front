@@ -1,0 +1,24 @@
+{
+  "logo": {
+    "src": "/public/assets/logo/logo.png",
+    "alt": "Logo"
+  },
+  "links": [
+    {
+      "title": "Accueil",
+      "href": "/"
+    },
+    {
+      "title": "Profil",
+      "href": "/profil"
+    },
+    {
+      "title": "Réglage",
+      "href": "/reglage"
+    },
+    {
+      "title": "Communauté",
+      "href": "/communaute"
+    }
+  ]
+}

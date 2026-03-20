@@ -1,0 +1,22 @@
+//--- SASS général du site ---
+body {
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  font-family: 'Roboto';
+}
+
+#root {
+  flex-direction: column;
+  display: flex;
+  min-height: 100dvh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
