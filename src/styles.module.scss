@@ -1,0 +1,29 @@
+.body_wrapper {
+  margin: 4.8125rem 4.8125rem 5.5rem 14.125rem;
+  display: flex;
+  gap: 1.9375rem;
+  
+  .charts_wrapper {
+    width: 52.1875fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1.875rem;
+    row-gap: 1.75rem;
+    flex-grow: 1;
+
+    div:first-child {
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }  
+  }
+
+  .cards_wrapper {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2.4375rem;
+    width: 16.125rem;
+    flex-shrink: 0;
+  }
+}

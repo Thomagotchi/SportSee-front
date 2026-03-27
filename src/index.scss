@@ -1,4 +1,12 @@
 //--- SASS général du site ---
+html {
+  font-size: 1vw;
+}
+
+*:not(dialog) {
+  margin: 0;
+}
+
 body {
   margin: 0;
   padding: 0;
