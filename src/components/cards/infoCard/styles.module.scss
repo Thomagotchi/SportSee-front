@@ -1,0 +1,33 @@
+.info_card_default {
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  border-radius: 0.3125rem;
+  background-color: #FBFBFB;
+
+  .info_card_default_media {
+    height: 3.75rem;
+    aspect-ratio: 1/1;
+  }
+
+  .info_card_default_body {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+
+    .info_card_default_title, .info_card_default_caption {
+      font-family: "Roboto";
+      line-height: 24px; 
+    }
+    .info_card_default_title {
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .info_card_default_caption {
+      font-weight: 500;
+      font-size: 14px;
+    }
+  }
+}
