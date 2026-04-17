@@ -12,8 +12,6 @@ import {
 import { getUserActivity } from "../../../services/userInfo";
 import { userActivityTransformer } from "../../../utils/transformers/userInfoTransformer";
 
-const USER_ID = 12;
-
 const CustomTooltip = ({ active, payload }) => {
   if (!active || !payload || !payload.length) return null;
   return (
@@ -50,14 +48,14 @@ const CustomLegend = () => (
   </div>
 );
 
-const BarGraphSectionDefault = () => {
+const BarGraphSectionDefault = ({ userId, isMock }) => {
   const [activityData, setActivityData] = useState([]);
 
   useEffect(() => {
-    getUserActivity({ id: USER_ID })
+    getUserActivity({ id: userId, isMock })
       .then((data) => setActivityData(userActivityTransformer(data)))
       .catch(console.error);
-  }, []);
+  }, [userId, isMock]);
 
   const kgValues = activityData.map((d) => d.kilogram);
   const minKg = kgValues.length ? Math.floor(Math.min(...kgValues)) : 0;

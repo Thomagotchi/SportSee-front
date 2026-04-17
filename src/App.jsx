@@ -7,7 +7,7 @@ import InfoCardDefault from "./components/cards/infoCard";
 
 // ----- Functions -----
 import { useEffect, useState } from "react";
-import { getUser } from "./services/userInfo";
+import { getUser, getUserFromParams } from "./services/userInfo";
 import { userKeyInfo } from "./utils/transformers/userInfoTransformer";
 // ----- Data -----
 import NavbarData from "./data/navbar.json";
@@ -24,15 +24,14 @@ import proteinIcon from "../public/assets/illustrations/protein-icon.png";
 import fatIcon from "../public/assets/illustrations/fat-icon.png";
 import carbsIcon from "../public/assets/illustrations/carbs-icon.png";
 
-const USER_ID = 12;
-
 function App() {
+  const { id: userId, isMock } = getUserFromParams();
   const [keyData, setKeyData] = useState(null);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await getUser({ id: USER_ID });
+        const response = await getUser({ id: userId, isMock });
         const transformed = userKeyInfo(response);
         setKeyData(transformed);
       } catch (error) {
@@ -41,7 +40,7 @@ function App() {
     }
 
     fetchData();
-  }, []);
+  }, [userId, isMock]);
 
   return (
     <>
@@ -52,13 +51,13 @@ function App() {
       />
       <Navigation type={"AsideDefault"} links={AsideData.links} />
       <div className={styles.page_wrapper}>
-        <HeroDefault />
+        <HeroDefault userId={userId} isMock={isMock} />
         <div className={styles.body_wrapper}>
           <div className={styles.charts_wrapper}>
-            <BarGraphSectionDefault />
-            <LineGraphSectionDefault />
-            <RadarGraphSectionDefault />
-            <ScoreGraphSectionDefault />
+            <BarGraphSectionDefault userId={userId} isMock={isMock} />
+            <LineGraphSectionDefault userId={userId} isMock={isMock} />
+            <RadarGraphSectionDefault userId={userId} isMock={isMock} />
+            <ScoreGraphSectionDefault userId={userId} isMock={isMock} />
           </div>
           <div className={styles.cards_wrapper}>
             <InfoCardDefault

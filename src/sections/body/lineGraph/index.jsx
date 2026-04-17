@@ -4,8 +4,6 @@ import { getUserAverage } from "../../../services/userInfo";
 import { userAverageTransformer } from "../../../utils/transformers/userInfoTransformer";
 import styles from "./styles.module.scss";
 
-const USER_ID = 12;
-
 const CustomTooltip = ({ active, payload }) => {
   if (!active || !payload?.length) return null;
   return (
@@ -26,13 +24,13 @@ const CustomCursor = ({ points }) => {
   );
 };
 
-const LineGraphSection = () => {
+const LineGraphSection = ({ userId, isMock }) => {
   const [sessionData, setSessionData] = useState([]);
   useEffect(() => {
-    getUserAverage({ id: USER_ID })
+    getUserAverage({ id: userId, isMock })
       .then((data) => setSessionData(userAverageTransformer(data)))
       .catch(console.error);
-  }, []);
+  }, [userId, isMock]);
 
   return (
     <div className={styles.line_graph_wrap}>

@@ -10,16 +10,14 @@ import {
 import { getUserPerformance } from "../../../services/userInfo";
 import { userPerformanceTransformer } from "../../../utils/transformers/userInfoTransformer";
 
-const USER_ID = 12;
-
-const RadarGraphSection = () => {
+const RadarGraphSection = ({ userId, isMock }) => {
   const [performanceData, setPerformanceData] = useState([]);
 
   useEffect(() => {
-    getUserPerformance({ id: USER_ID })
+    getUserPerformance({ id: userId, isMock })
       .then((data) => setPerformanceData(userPerformanceTransformer(data)))
       .catch(console.error);
-  }, []);
+  }, [userId, isMock]);
 
   return (
     <div className={styles.radar_graph}>

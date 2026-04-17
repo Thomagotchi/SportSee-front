@@ -20,8 +20,8 @@
     aspect-ratio: 1/1;
     .radar_graph_text {
       position: absolute;
-      width: 65%;
-      height: 65%;
+      width: 70%;
+      height: 70%;
       border-radius: 50%;
       background-color: white;
       display: flex;
@@ -30,13 +30,13 @@
       justify-content: center;
       text-align: center;
       .radar_graph_title {
-        font-size: 1.625rem;
+        font-size: clamp(1rem, 1.5vw, 1.625rem);
         font-weight: 700;
         color: #282D30;
         line-height: 1;
       }
       .radar_graph_subtitle {
-        font-size: 1rem;
+        font-size: clamp(0.75rem, 1vw, 1rem);
         font-weight: 500;
         color: #74798C;
         max-width: 90px;
