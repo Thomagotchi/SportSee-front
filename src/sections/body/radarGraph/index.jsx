@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styles from "./styles.module.scss";
 import {
   RadarChart,
   Radar,
@@ -21,28 +22,16 @@ const RadarGraphSection = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        background: "#282D30",
-        borderRadius: 5,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <ResponsiveContainer width="100%" height={240}>
+    <div className={styles.radar_graph}>
+      <ResponsiveContainer width="100%" height="100%">
         <RadarChart
           data={performanceData}
-          margin={{ top: 24, right: 36, bottom: 24, left: 36 }}
+          margin={{ top: 12, right: 12, bottom: 12, left: 12 }}
         >
-          <PolarGrid
-            gridType="polygon"
-            radialLines={false}
-            stroke="rgba(255,255,255,0.25)"
-          />
+          <PolarGrid gridType="polygon" radialLines={false} stroke="#FFFFFF" />
           <PolarAngleAxis
             dataKey="subject"
-            tick={{ fill: "#fff", fontSize: 12, fontWeight: 500 }}
+            tick={{ fill: "#fff", fontSize: "0.75rem", fontWeight: 500 }}
             tickLine={false}
           />
           <Radar
