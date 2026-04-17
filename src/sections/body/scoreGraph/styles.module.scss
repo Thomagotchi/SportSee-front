@@ -1,0 +1,48 @@
+.score_graph_wrap {
+  background: #FBFBFB;
+  border-radius: 5px;
+  padding: 1.5rem 1.875rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  .score_graph_title {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #282D30;
+    margin: 0 0 -12px 0;
+  }
+  .radar_graph_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    aspect-ratio: 1/1;
+    .radar_graph_text {
+      position: absolute;
+      width: 65%;
+      height: 65%;
+      border-radius: 50%;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      .radar_graph_title {
+        font-size: 1.625rem;
+        font-weight: 700;
+        color: #282D30;
+        line-height: 1;
+      }
+      .radar_graph_subtitle {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #74798C;
+        max-width: 90px;
+        line-height: 1.4;
+        margin-top: 8px;
+      }
+    }
+  }
+}
