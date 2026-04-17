@@ -1,5 +1,5 @@
 .info_card_default {
-  padding: 2rem;
+  padding: clamp(2.05vh, 2.05vh, 3.125vh);
   display: flex;
   gap: 1.5rem;
   border-radius: 0.3125rem;
