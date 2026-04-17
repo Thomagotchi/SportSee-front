@@ -1,10 +1,5 @@
-//--- SASS général du site ---
 html {
-  font-size: 1vw;
-}
-
-*:not(dialog) {
-  margin: 0;
+  font-size: 16px;
 }
 
 body {
@@ -12,12 +7,6 @@ body {
   padding: 0;
   justify-content: center;
   font-family: 'Roboto';
-}
-
-#root {
-  flex-direction: column;
-  display: flex;
-  min-height: 100dvh;
 }
 
 a {
