@@ -1,21 +1,22 @@
 .hero_default {
-  width: 100vw;
-  padding: 9.9375rem 0 0 14rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
+  margin-bottom: 77px;
   gap: 2.5rem;
 
+  .heading, .text {
+    line-height: 1.5rem;
+    margin: 0;
+  }
   .heading {
     font-size: 3rem;
     font-weight: 500;
-    line-height: 1.5rem;
     .heading_highlight {
       color: #FF0101;
     }
   }
-
   .text {
     font-size: 1.125rem;
-    line-height: 1.5rem;
   }
 }
