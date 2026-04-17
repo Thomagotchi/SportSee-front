@@ -51,39 +51,41 @@ function App() {
         links={NavbarData.links}
       />
       <Navigation type={"AsideDefault"} links={AsideData.links} />
-      <HeroDefault />
-      <div className={styles.body_wrapper}>
-        <div className={styles.charts_wrapper}>
-          <BarGraphSectionDefault />
-          <LineGraphSectionDefault />
-          <RadarGraphSectionDefault />
-          <ScoreGraphSectionDefault />
-        </div>
-        <div className={styles.cards_wrapper}>
-          <InfoCardDefault
-            img={caloriesIcon}
-            alt={"Calories icon"}
-            text={keyData?.calorie}
-            caption={"Calories"}
-          />
-          <InfoCardDefault
-            img={proteinIcon}
-            alt={"Protein icon"}
-            text={keyData?.protein}
-            caption={"Proteines"}
-          />
-          <InfoCardDefault
-            img={carbsIcon}
-            alt={"Glucides icon"}
-            text={keyData?.carbohydrate}
-            caption={"Glucides"}
-          />
-          <InfoCardDefault
-            img={fatIcon}
-            alt={"Lipides icon"}
-            text={keyData?.lipid}
-            caption={"Lipides"}
-          />
+      <div className={styles.page_wrapper}>
+        <HeroDefault />
+        <div className={styles.body_wrapper}>
+          <div className={styles.charts_wrapper}>
+            <BarGraphSectionDefault />
+            <LineGraphSectionDefault />
+            <RadarGraphSectionDefault />
+            <ScoreGraphSectionDefault />
+          </div>
+          <div className={styles.cards_wrapper}>
+            <InfoCardDefault
+              img={caloriesIcon}
+              alt={"Calories icon"}
+              text={keyData?.calorie}
+              caption={"Calories"}
+            />
+            <InfoCardDefault
+              img={proteinIcon}
+              alt={"Protein icon"}
+              text={keyData?.protein}
+              caption={"Proteines"}
+            />
+            <InfoCardDefault
+              img={carbsIcon}
+              alt={"Glucides icon"}
+              text={keyData?.carbohydrate}
+              caption={"Glucides"}
+            />
+            <InfoCardDefault
+              img={fatIcon}
+              alt={"Lipides icon"}
+              text={keyData?.lipid}
+              caption={"Lipides"}
+            />
+          </div>
         </div>
       </div>
     </>
