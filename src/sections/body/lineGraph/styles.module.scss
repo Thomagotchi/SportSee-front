@@ -1,0 +1,50 @@
+.line_graph_tooltip {
+  background: #fff;
+  padding: 8px 10px;
+  font-size: 8px;
+  font-weight: 500;
+  color: #282D30;
+  line-height: 24px;
+}
+
+.line_graph_wrap {
+  background: #FF0000;
+  border-radius: 5px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .line_graph_heading {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 0 24px;
+    line-height: 1.4;
+    max-width: 130px;
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    z-index: 2;
+  }
+
+  .xaxis_row {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 24px 10px;
+    flex-shrink: 0;
+  }
+
+  .xaxis_label {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}

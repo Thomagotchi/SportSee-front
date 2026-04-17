@@ -1,54 +1,33 @@
 import { useState, useEffect } from "react";
-import {
-  LineChart,
-  Line,
-  XAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
+import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
 import { getUserAverage } from "../../../services/userInfo";
 import { userAverageTransformer } from "../../../utils/transformers/userInfoTransformer";
+import styles from "./styles.module.scss";
 
 const USER_ID = 12;
-
-// #region Sub-components
 
 const CustomTooltip = ({ active, payload }) => {
   if (!active || !payload?.length) return null;
   return (
-    <div
-      style={{
-        background: "#fff",
-        padding: "8px 10px",
-        fontSize: "8px",
-        fontWeight: 500,
-        color: "#282D30",
-        lineHeight: "24px",
-      }}
-    >
-      {payload[0]?.value} min
-    </div>
+    <div className={styles.line_graph_tooltip}>{payload[0]?.value} min</div>
   );
 };
 
-const CustomCursor = ({ points, height }) => {
+const CustomCursor = ({ points }) => {
   if (!points?.length) return null;
   return (
     <rect
       x={points[0].x}
-      y={0}
+      y={-9999}
       width={9999}
-      height={height}
+      height={99999}
       fill="rgba(0,0,0,0.1)"
     />
   );
 };
 
-// #endregion
-
 const LineGraphSection = () => {
   const [sessionData, setSessionData] = useState([]);
-
   useEffect(() => {
     getUserAverage({ id: USER_ID })
       .then((data) => setSessionData(userAverageTransformer(data)))
@@ -56,44 +35,15 @@ const LineGraphSection = () => {
   }, []);
 
   return (
-    <div
-      style={{
-        background: "#FF0000",
-        borderRadius: 5,
-        paddingTop: 24,
-        width: "100%",
-        overflow: "hidden",
-      }}
-    >
-      <h2
-        style={{
-          fontSize: 15,
-          fontWeight: 500,
-          color: "rgba(255,255,255,0.7)",
-          margin: "0 0 0 24px",
-          lineHeight: 1.4,
-          maxWidth: 130,
-        }}
-      >
-        Durée moyenne des sessions
-      </h2>
-
-      <ResponsiveContainer width="100%" height={160}>
+    <div className={styles.line_graph_wrap}>
+      <h2 className={styles.line_graph_heading}>Durée moyenne des sessions</h2>
+      <ResponsiveContainer width="100%" height="100%">
         <LineChart
           data={sessionData}
-          margin={{ top: 20, right: 0, left: 0, bottom: 10 }}
+          margin={{ top: 120, right: 0, left: 0, bottom: 40 }}
         >
-          <XAxis
-            dataKey="day"
-            tickLine={false}
-            axisLine={false}
-            tick={{ fill: "rgba(255,255,255,0.7)", fontSize: 12 }}
-            dy={6}
-          />
-          <Tooltip
-            content={<CustomTooltip />}
-            cursor={<CustomCursor />}
-          />
+          <XAxis dataKey="day" hide />
+          <Tooltip content={<CustomTooltip />} cursor={<CustomCursor />} />
           <Line
             type="monotone"
             dataKey="sessionLength"
@@ -109,6 +59,13 @@ const LineGraphSection = () => {
           />
         </LineChart>
       </ResponsiveContainer>
+      <div className={styles.xaxis_row}>
+        {sessionData.map((d, i) => (
+          <span key={i} className={styles.xaxis_label}>
+            {d.day}
+          </span>
+        ))}
+      </div>
     </div>
   );
 };
