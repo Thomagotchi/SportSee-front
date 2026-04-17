@@ -1,6 +1,5 @@
 .navbar {
   background-color: black;
-  width: 100vw;
   position: fixed;
   z-index: 20;
   top: 0;
@@ -10,13 +9,15 @@
   align-items: center;
   gap: 9.3125rem;
   justify-content: space-between;
-  padding: 1.125rem 5.6875rem 0.75rem 1.75rem;
+  padding: 1.125rem 0 0.75rem 0;
   box-sizing: border-box;
 }
 
 .navbar_home {
   display: inline-flex;
   align-items: center;
+  padding-left: 5.6875rem;
+  flex-shrink: 0;
 }
 
 .navbar_home img {
@@ -28,7 +29,9 @@
 .links {
   display: flex;
   align-items: center;
-  gap: 13.6875rem;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding-right: 1.75rem;
 }
 
 .navbar_link {
