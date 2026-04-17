@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import styles from "./styles.module.scss";
 import {
   BarChart,
   Bar,
@@ -13,79 +14,41 @@ import { userActivityTransformer } from "../../../utils/transformers/userInfoTra
 
 const USER_ID = 12;
 
-// #region Sub-components
-
 const CustomTooltip = ({ active, payload }) => {
   if (!active || !payload || !payload.length) return null;
   return (
-    <div
-      style={{
-        background: "#E60000",
-        padding: "4px 6px",
-        color: "#fff",
-        fontSize: "7px",
-        lineHeight: "24px",
-        fontWeight: 500,
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "16px",
-      }}
-    >
+    <div className={styles.bar_graph_tooltip}>
       <span>{payload[0]?.value}kg</span>
       <span>{payload[1]?.value}Kcal</span>
     </div>
   );
 };
 
+const CustomCursor = ({ x, y, width, height }) => {
+  const cursorWidth = 56;
+  return (
+    <rect
+      x={x + (width - cursorWidth) / 2}
+      y={y}
+      width={cursorWidth}
+      height={height}
+      fill="rgba(0,0,0,0.07)"
+    />
+  );
+};
+
 const CustomLegend = () => (
-  <div style={{ display: "flex", gap: "32px" }}>
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "8px",
-        color: "#74798C",
-        fontSize: "14px",
-      }}
-    >
-      <span
-        style={{
-          width: 8,
-          height: 8,
-          borderRadius: "50%",
-          background: "#282D30",
-          display: "inline-block",
-          flexShrink: 0,
-        }}
-      />
+  <div className={styles.bar_graph_legend}>
+    <span className={styles.bar_graph_legend_text}>
+      <span className={styles.bar_graph_legend_circle} />
       Poids (kg)
     </span>
-    <span
-      style={{
-        display: "flex",
-        alignItems: "center",
-        gap: "8px",
-        color: "#74798C",
-        fontSize: "14px",
-      }}
-    >
-      <span
-        style={{
-          width: 8,
-          height: 8,
-          borderRadius: "50%",
-          background: "#E60000",
-          display: "inline-block",
-          flexShrink: 0,
-        }}
-      />
+    <span className={styles.bar_graph_legend_text}>
+      <span className={`${styles.bar_graph_legend_circle} ${styles.red}`} />
       Calories brûlées (kCal)
     </span>
   </div>
 );
-
-// #endregion
 
 const BarGraphSectionDefault = () => {
   const [activityData, setActivityData] = useState([]);
@@ -105,36 +68,14 @@ const BarGraphSectionDefault = () => {
   );
 
   return (
-    <div
-      style={{
-        background: "#FBFBFB",
-        borderRadius: 5,
-        padding: "24px 32px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 32,
-        }}
-      >
-        <h2
-          style={{
-            fontSize: 15,
-            fontWeight: 500,
-            color: "#282D30",
-            margin: 0,
-          }}
-        >
-          Activité quotidienne
-        </h2>
+    <div className={styles.bar_graph_default}>
+      <div className={styles.bar_graph}>
+        <h2 className={styles.bar_graph_title}>Activité quotidienne</h2>
         <CustomLegend />
       </div>
 
-      <ResponsiveContainer width="100%" height={200}>
-        <BarChart data={activityData} barGap={8} barCategoryGap="35%">
+      <ResponsiveContainer width="100%" height="80%">
+        <BarChart data={activityData} barGap={8} barCategoryGap="55%">
           {kgTicks.map((tick) => (
             <ReferenceLine
               key={tick}
@@ -142,6 +83,7 @@ const BarGraphSectionDefault = () => {
               yAxisId="kilogram"
               stroke="#DEDEDE"
               strokeDasharray="3 3"
+              zIndex={1}
             />
           ))}
           <XAxis
@@ -165,7 +107,8 @@ const BarGraphSectionDefault = () => {
           <YAxis yAxisId="calories" orientation="left" hide />
           <Tooltip
             content={<CustomTooltip />}
-            cursor={{ fill: "rgba(0,0,0,0.07)" }}
+            cursor={<CustomCursor />}
+            offset={32}
           />
           <Bar
             yAxisId="kilogram"
