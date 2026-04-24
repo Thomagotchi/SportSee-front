@@ -5,9 +5,9 @@ const DEFAULT_ID = 12;
 
 export function getUserFromParams() {
   const segment = window.location.pathname.split("/").filter(Boolean)[0];
-  if (segment === "mock") return { id: null, isMock: true };
   const id = parseInt(segment, 10);
-  return { id: isNaN(id) ? DEFAULT_ID : id, isMock: false };
+  if (!isNaN(id) && id !== 1) return { id, isMock: false };
+  return { id: null, isMock: true };
 }
 
 export async function getUser({ id, isMock }) {
