@@ -42,6 +42,37 @@ function App() {
     fetchData();
   }, [userId, isMock]);
 
+  const infoCards = [
+    {
+      key: "calories",
+      img: caloriesIcon,
+      alt: "Calories icon",
+      text: keyData?.calorie,
+      caption: "Calories",
+    },
+    {
+      key: "protein",
+      img: proteinIcon,
+      alt: "Protein icon",
+      text: keyData?.protein,
+      caption: "Proteines",
+    },
+    {
+      key: "carbs",
+      img: carbsIcon,
+      alt: "Glucides icon",
+      text: keyData?.carbohydrate,
+      caption: "Glucides",
+    },
+    {
+      key: "fat",
+      img: fatIcon,
+      alt: "Lipides icon",
+      text: keyData?.lipid,
+      caption: "Lipides",
+    },
+  ];
+
   return (
     <>
       <Navigation
@@ -60,30 +91,15 @@ function App() {
             <ScoreGraphSectionDefault userId={userId} isMock={isMock} />
           </div>
           <div className={styles.cards_wrapper}>
-            <InfoCardDefault
-              img={caloriesIcon}
-              alt={"Calories icon"}
-              text={keyData?.calorie}
-              caption={"Calories"}
-            />
-            <InfoCardDefault
-              img={proteinIcon}
-              alt={"Protein icon"}
-              text={keyData?.protein}
-              caption={"Proteines"}
-            />
-            <InfoCardDefault
-              img={carbsIcon}
-              alt={"Glucides icon"}
-              text={keyData?.carbohydrate}
-              caption={"Glucides"}
-            />
-            <InfoCardDefault
-              img={fatIcon}
-              alt={"Lipides icon"}
-              text={keyData?.lipid}
-              caption={"Lipides"}
-            />
+            {infoCards.map((card) => (
+              <InfoCardDefault
+                key={card.key}
+                img={card.img}
+                alt={card.alt}
+                text={card.text}
+                caption={card.caption}
+              />
+            ))}
           </div>
         </div>
       </div>
