@@ -4,6 +4,7 @@ import styles from "./styles.module.scss";
 // ----- Components -----
 import Navigation from "./components/navigation/navigation";
 import InfoCardDefault from "./components/cards/infoCard";
+import ErrorPage from "./components/error";
 
 // ----- Functions -----
 import { useEffect, useState } from "react";
@@ -24,23 +25,59 @@ import proteinIcon from "../public/assets/illustrations/protein-icon.png";
 import fatIcon from "../public/assets/illustrations/fat-icon.png";
 import carbsIcon from "../public/assets/illustrations/carbs-icon.png";
 
+function MockButton() {
+  return (
+    <button
+      className={styles.mock_button}
+      onClick={() => {
+        window.location.href = "/mock";
+      }}
+    >
+      mock
+    </button>
+  );
+}
+
 function App() {
   const { id: userId, isMock } = getUserFromParams();
   const [keyData, setKeyData] = useState(null);
+  const [error, setError] = useState(null);
+
+  const noUser = !userId && !isMock;
 
   useEffect(() => {
+    if (noUser) return;
+
     async function fetchData() {
       try {
         const response = await getUser({ id: userId, isMock });
         const transformed = userKeyInfo(response);
         setKeyData(transformed);
-      } catch (error) {
-        console.error(error);
+      } catch {
+        setError("Utilisateur introuvable.");
       }
     }
 
     fetchData();
-  }, [userId, isMock]);
+  }, [userId, isMock, noUser]);
+
+  if (noUser) {
+    return (
+      <>
+        <ErrorPage message="Aucun utilisateur détecté. Naviguez vers /<id> ou cliquez sur mock." />
+        <MockButton />
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <ErrorPage message={error} />
+        <MockButton />
+      </>
+    );
+  }
 
   const infoCards = [
     {
@@ -103,6 +140,7 @@ function App() {
           </div>
         </div>
       </div>
+      <MockButton />
     </>
   );
 }

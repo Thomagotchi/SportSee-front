@@ -1,3 +1,24 @@
+.mock_button {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 9999;
+
+  &:hover {
+    background-color: #cc0000;
+  }
+}
+
 .page_wrapper {
   margin: 0 auto;
   padding: 179px 0 0 134px;
