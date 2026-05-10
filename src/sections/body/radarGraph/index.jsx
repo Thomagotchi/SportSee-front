@@ -29,7 +29,7 @@ const RadarGraphSection = ({ userId, isMock }) => {
           <PolarGrid gridType="polygon" radialLines={false} stroke="#FFFFFF" />
           <PolarAngleAxis
             dataKey="subject"
-            tick={{ fill: "#fff", fontSize: "0.75rem", fontWeight: 500 }}
+            tick={{ fill: "#fff", fontSize: "0.75em", fontWeight: 500 }}
             tickLine={false}
           />
           <Radar
